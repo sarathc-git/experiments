@@ -21,7 +21,7 @@ public class HelloWorldControllerTest {
     @Test
     @Tag("e2e")
     public void testShouldReturnMessage() {
-        String response = client.getForObject("http://localhost:" + localPort + "/", String.class);
+        String response = client.getForObject("http://localhost:" + localPort + "/v0.2/", String.class);
         assertEquals("Hello World", response);
     }
 

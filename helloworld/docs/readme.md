@@ -16,9 +16,16 @@
 
 ### Application Testing with K6
 
+#### Setup k6 and run perf tests
+
+#### setup k6 to visualize perf tests in grafana.
+
+     (Currently only through influxdb, experimental statsd_exporter for prometheus.)
+
 #### Using XXXX for creating test data
 
 ### Application with Prometheus
+
     Added micormeter and spring boot actuator to generate the metrics. 
     Added the "management.endpoints.web.exposure.include=health,info,prometheus" To tell springboot to create the management endpoints and expose them as a http/web exposed urls. 
     we could also use JMX.exposure to enable these metrics to be accessible over JMX. 
@@ -33,13 +40,13 @@
 
 ### Settig up observability dashboard
 
-#### Create standard dashboards and store them in config.
+#### Create standard dashboards and store them in config
 
 ### Application API documentation with swagger
 
 ### Application Deployment on Docker
 
-### Application deployment using buildpacks.io 
+### Application deployment using buildpacks.io
 
 ### Application deployment on Kubernetes
 

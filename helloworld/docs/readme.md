@@ -8,26 +8,44 @@
 
 ### HelloWorld Spring boot Application
 
+    Springboot provides a very comfortable starting point to build complex applications with microservices patterns. 
+    Springboot also was one of the earliest frameworks to provide this and hence has a strong acceptance and comfort in the Java technology community. 
+
+    There are other frameworks that have evovled and seem very promising. This set of codelabs takes an opinionated path of building microservices to scale with various expectations of operational excellence, architecture simplicity, etc. 
+
 ### HelloWorld Application with Controller
 
+    Springboot provides a HTTP handler abstraction called controllers that provide strong capabilities to recieve and respond to clients over HTTP. 
+
 #### Without test cases
+
+    We create a simple HelloWorldController, that responds back with a simple 
+    "Hello World" message. 
+
+    The request pattern for this is a GET /{server}:{port}/v0.2/
 
 #### With test cases
 
 ### Application Testing with K6
 
-#### Setup k6 and run perf tests
+    K6 is a very modern testing framework that focuses on making testing easy for developers and make it developer friendly. 
+    It uses a relatively easy javascript based DSL to define various aspects of creating load testing.
 
-#### setup k6 to visualize perf tests in grafana.
+    Making perf testing simple, focuses on allowing consitent mechanism for the tests to be run on Local Dev environment, Integrated test environment or a Pre Prod Performance test environment. 
+
+    At this point this project creates a simple script.js in a 
+    /test/**/perf directory to create a perf test. 
+
+    TODO: As of July, 2021, K6 has a influxdb based integration to push the perf test results into grafana. So either set this up, or build a prometheus integration for K6 and opensource it. 
+
+#### setup k6 to visualize perf tests in grafana
 
      (Currently only through influxdb, experimental statsd_exporter for prometheus.)
 
-#### Using XXXX for creating test data
-
 ### Application with Prometheus
 
-    Added micormeter and spring boot actuator to generate the metrics. 
-    Added the "management.endpoints.web.exposure.include=health,info,prometheus" To tell springboot to create the management endpoints and expose them as a http/web exposed urls. 
+    DONE: Added micormeter and spring boot actuator to generate the metrics.  
+    DONE: Added the "management.endpoints.web.exposure.include=health,info,prometheus" To tell springboot to create the management endpoints and expose them as a http/web exposed urls. 
     we could also use JMX.exposure to enable these metrics to be accessible over JMX. 
     The various actuator urls are available on http://localhost:8080/actuator.
     TODO: Need to see how the actuator urls can be on a port different than the application/api port. 
@@ -40,7 +58,23 @@
 
 ### Settig up observability dashboard
 
+    For every springboot microservice project, create some standard dashboard jsons and commit them to the config directory. When the developer brings up the application with docker compose up, the standard dashboards should show up on grafana with out any work from the developer. 
+
+#### Create a dashboard for aggregates
+
+    In the current state of the dashboards the teams are using, the tactical metrics are available, but it would be good to use a design process to define the dashboards. 
+
+    For example, An aggregates dahsboard that summarises busines metrics, technical metrics are summarized. For example, total hits this month or a day or some thing like that. Total revenue booked, etc. 
+
+    There could be other dashboards for business and technical metrics as part of the folder to be reviewed or looked at as needed. 
+
+#### Create a dashboard from spring / http metrics
+
+#### Create a dashboard from system/resource utilization metrics
+
 #### Create standard dashboards and store them in config
+
+#### Using XXXX for creating test data
 
 ### Application API documentation with swagger
 

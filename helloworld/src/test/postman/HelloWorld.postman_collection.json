@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "850acfb5-4c0e-46b0-8bf4-3190db3dc64f",
+		"name": "HelloWorld",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post GreetingRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Arya\",\n\t\"locale\" : \"en-in\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v0.1/GreetingRequest",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v0.1",
+						"GreetingRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get HelloWorld",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Sarath\",\n\t\"locale\" : \"en-in\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v0.5/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v0.5",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get GreetingResponse ROOT",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Sarath\",\n\t\"locale\" : \"en-in\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v0.1/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v0.1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

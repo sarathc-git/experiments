@@ -14,6 +14,17 @@
 
 ### Developer Experience
 
+    A key metric for a technology leadership is how good the developer experience is. There is much to making developer experience great. 
+    A great developer experience is based on Interview Experience, Onboarding Experience, Interal Tool set, Effective Developer enablement, Safety net through a Buddy, Warm acceptance by team.
+    Apart from all these Physchological Safety and a Sincere Welcoming culture make for a great Developer Experience.
+
+    Over the past couple of weeks, I have been focusing on one aspect. How do we ensure that a new developer can get into a team, check out code and play around with it. 
+
+    Am working on an opiniated way to build this, with a goal that a developer should be able to check out code, find tests to run, undersatnd metrics that are critical on a dashboard that is ready to view. 
+
+    A Developer A start with a team, gets some onboarding links including the repo to the code base. Is able to check out this code base, execute this on their developer machine (laptop). 
+    When this is done, there is a bunch of tests that run, there is a grafana dashboard that provides a complete observability dashboard that visualized key business metrics, system metrics and a complete set of service paths the system serves to customers. 
+
 ### REST Best Practices
 
 ### Testing Best Practices

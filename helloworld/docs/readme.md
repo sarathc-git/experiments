@@ -36,6 +36,8 @@
     At this point this project creates a simple script.js in a 
     /test/**/perf directory to create a perf test. 
 
+    Create fake objects with faker.js and use that to create realistic data for testing. 
+    
     TODO: As of July, 2021, K6 has a influxdb based integration to push the perf test results into grafana. So either set this up, or build a prometheus integration for K6 and opensource it. 
 
 #### setup k6 to visualize perf tests in grafana
@@ -74,9 +76,28 @@
 
 #### Create standard dashboards and store them in config
 
-#### Using XXXX for creating test data
+#### Use a diagraming plugin in grafana to create a servicepath
+
+#### Using faker for creating test data
+    Tried using faker as part of k6, but this was very cumbersome. 
+    There is no direct way because k6 is not based on node and there is an article online from about 2019 which tries to setup it up with a node and yarn based solution.
+
+    But the problem with this is that the tests are no longer directly run from k6 but there is a test driver that runs the k6 tests. Need to evaluate if we want to get to that kind of model. 
+
+    If there are multiple tests, we still might need a test driver for all these tests. So it might eventually be a good idea, but we should evaluate alternatives. 
+
+## Create a GreetingController
+
+    What is the difference between MapStruct and ModelMapper
+### Add lombok to the dependencies and editor (vscode)
+
+### Create a model class and POST and GET apis
 
 ### Application API documentation with swagger
+
+### Security best practices for rest apis
+
+    https://dzone.com/articles/security-best-practices-for-rest-apis
 
 ### Application Deployment on Docker
 

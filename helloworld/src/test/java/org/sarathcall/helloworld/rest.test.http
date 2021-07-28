@@ -1,0 +1,15 @@
+### 
+POST http://localhost:8080/v0.1/GreetingRequest/ HTTP/1.1
+Content-type: application/json
+
+{
+    "name": "Sarath",
+    "locale": "en-in"
+}
+
+### 
+GET http://localhost:8080/v0.5/ HTTP/1.1
+content-type: application/json
+
+### 
+GET http://localhost:8080/v0.1/ HTTP/1.1

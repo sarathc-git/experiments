@@ -11,7 +11,7 @@ RUN mvn -f /home/app/pom.xml clean package
 
 # Create the App package
 #
-FROM build
+FROM openjdk:11
 COPY --from=build /home/app/target/helloworld-0.0.1-SNAPSHOT.jar /usr/local/lib/helloworld.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/usr/local/lib/helloworld.jar"]

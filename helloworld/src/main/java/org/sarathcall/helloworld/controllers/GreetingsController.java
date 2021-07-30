@@ -3,6 +3,7 @@ package org.sarathcall.helloworld.controllers;
 import org.sarathcall.helloworld.dtos.GreetingRequestDTO;
 import org.sarathcall.helloworld.model.GreetingRequest;
 import org.sarathcall.helloworld.services.GreetingService;
+import org.sarathcall.helloworld.services.KafkaProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,9 @@ public class GreetingsController {
 
     @Autowired
     GreetingService service;
+
+    @Autowired
+    KafkaProducerService aKafkaProducer; 
  /**
   * Provides clients a POST API for a GreetingRequest.
   * 
@@ -33,11 +37,16 @@ public class GreetingsController {
                                     .name(aRequestDTO.getName())
                                     .locale(aRequestDTO.getLocale())
                                     .build();
+                                    
         System.out.println ("Content Type : "  + contentType);
         System.out.println ("DTO : " + aRequestDTO);
         System.out.println ("Model : " + aRequest);
-        String response = service.getGreeting(aRequest);
 
+        String response = service.getGreeting(aRequest);
+        
+        aKafkaProducer.pushAGreetingRequest(aRequest);
+        System.out.println ("Published " + aRequest + "to kakfa");
+        
         return response;
     }
 
@@ -51,7 +60,8 @@ public class GreetingsController {
  * DONE: Create a simple POST Handler.
  * TODO: Add ModelMapper / MapStruct.
  * TODO: Add Loggers
- * TODO: Setup some validations for the name. 
+ * TODO: Add authentication and security
+ * TODO: Setup some validations for the name
  * TODO: Setup a Kafka pipeline to push the name submissions.
  * TODO: Setup a Grafana business dashboard with some metrics. 
  * TODO: Enable preconfigured dahsboards for the project. 

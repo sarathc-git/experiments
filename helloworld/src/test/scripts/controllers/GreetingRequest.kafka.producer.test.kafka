@@ -1,0 +1,27 @@
+PRODUCER keyed-message
+topic: gr_posted_topic
+key: mykeyq
+{   
+    "name":"Sarath  keyed", 
+    "locale":"en-us"
+}
+
+###
+
+PRODUCER non-keyed-json-message
+topic: gr_posted_topic
+{   
+    "name":"Sarath Non Keyed", 
+    "locale":"en-us"
+}
+
+### 
+
+PRODUCER non-keyed-json-message
+topic: gr_posted_topic
+{
+    "name": "{{animal.dog}}",
+    "locale": "en_us"
+}
+
+###

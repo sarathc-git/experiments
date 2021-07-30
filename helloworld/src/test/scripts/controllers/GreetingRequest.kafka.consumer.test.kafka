@@ -1,0 +1,5 @@
+
+CONSUMER group-id
+topic: gr_posted_topic
+partitions: 0
+from: 1

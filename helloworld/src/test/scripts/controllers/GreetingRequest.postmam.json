@@ -41,44 +41,6 @@
 			"response": []
 		},
 		{
-			"name": "Get HelloWorld",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\" : \"Sarath\",\n\t\"locale\" : \"en-in\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/v0.5/",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"v0.5",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Get GreetingResponse ROOT",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true

@@ -88,10 +88,56 @@
 
 ## Create a GreetingController
 
-    What is the difference between MapStruct and ModelMapper
+    Created a simple greeting Controller tha takes are request for a greeeting. This is simple example that shows how a POST can be setup with an opiniated view of where and how to setup DTOs, etc.
+
+### Store the object in a persistent store
+
+    Create a repository to store the greeting request, post it on kafka.
+
+### Build some business rules on accepting the greeting request
+
+    If the name is sent earlier, change the name. 
+    Setup a throttling if the name is sent more than a frequency. 
+    Create a business report of requests received with a distribution of first character of the name.
+    Create a business report of requests received with a distribution of the locale. 
+    Transfrom the Greeting to enhance a metric by adding a country name based on the locale, so that we can plot a realtime global map. 
+
+### Leverage TestContainers to enable seemless integration testing
+
+
+### Setup kafka and ensure it is accessible
+
+    As a developer, kafka is a key architectural component. So for a microservice
+    the developer will be able to create a kakfa docker instance. The docker compose
+    is setup to create this infra seemlessly. 
+
+    A config tester validates that all the docker container (app, promethus, 
+    grafana, zookeeper, kafka) are all running. 
+
+    For the microservie, the kafka topics used by the microservices are all configured 
+    in the application.properties/yml to ensure simplification of the startup. 
+
+    This also ensures that for different environments, the applciation properties 
+    can be consistent and deterministic. This should also stop ops teams creating 
+    topics directly in production environments. 
+
+    Also from a toolset perspective, vscode has an amazing kafka plugin, that allows 
+    you to connect to the kafka broker and explore all the topics on the kafka cluster.
+    With this plugin, it is also very easy to create producers and consumers that
+    help push some test objects and consume them. 
+    Pushing objects is simply creating a json object and some syntactic sugar. What 
+    makes this even better is the fact that it integrates with fakerjs and provides
+    ability to produce multiple objects with fake details, there by simplifying 
+    developer and test confidence. 
+
+#### Toolset - use kafka client plugin for vscode
+
 ### Add lombok to the dependencies and editor (vscode)
 
 ### Create a model class and POST and GET apis
+
+    What is the difference between MapStruct and ModelMapper
+
 
 ### Application API documentation with swagger
 

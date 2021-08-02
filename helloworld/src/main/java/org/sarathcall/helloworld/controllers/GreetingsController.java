@@ -49,7 +49,7 @@ public class GreetingsController {
         String response = service.getGreeting(aRequest);
         
         aKafkaProducer.pushAGreetingRequest(aRequest);
-        log.debug("Published {} to kafka" + aRequest);
+        log.debug("Published {} to kafka", aRequest);
         
         log.trace("<-- Completed Request Processing");
         return response;

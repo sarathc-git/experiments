@@ -1,8 +1,8 @@
 PRODUCER keyed-message
 topic: gr_posted_topic
-key: mykeyq
+key: {{random.number}}
 {   
-    "name":"Sarath  keyed", 
+    "name":"{{name.firstName}}", 
     "locale":"en-us"
 }
 
@@ -11,7 +11,7 @@ key: mykeyq
 PRODUCER non-keyed-json-message
 topic: gr_posted_topic
 {   
-    "name":"Sarath Non Keyed", 
+    "name":"{{name.firstName}}", 
     "locale":"en-us"
 }
 

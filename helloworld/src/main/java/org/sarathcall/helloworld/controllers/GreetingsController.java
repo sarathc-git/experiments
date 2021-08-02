@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping ("/v0.1")
+@Slf4j
 public class GreetingsController {
 
     @Autowired
@@ -32,21 +35,23 @@ public class GreetingsController {
     produces = "text/plain") 
     public String getGreeting (@RequestBody GreetingRequestDTO aRequestDTO
                                 ,@RequestHeader(name = "Content-Type") String contentType) {
+        log.trace ("--> Starting Request Processing");
         GreetingRequest aRequest = GreetingRequest
                                     .builder()
                                     .name(aRequestDTO.getName())
                                     .locale(aRequestDTO.getLocale())
                                     .build();
                                     
-        System.out.println ("Content Type : "  + contentType);
-        System.out.println ("DTO : " + aRequestDTO);
-        System.out.println ("Model : " + aRequest);
+        log.debug ("Content Type : {}", contentType);
+        log.debug ("DTO : {}", aRequestDTO);
+        log.debug ("Model : {} ", aRequest);
 
         String response = service.getGreeting(aRequest);
         
         aKafkaProducer.pushAGreetingRequest(aRequest);
-        System.out.println ("Published " + aRequest + "to kakfa");
+        log.debug("Published {} to kafka" + aRequest);
         
+        log.trace("<-- Completed Request Processing");
         return response;
     }
 
@@ -60,6 +65,7 @@ public class GreetingsController {
  * DONE: Create a simple POST Handler.
  * TODO: Add ModelMapper / MapStruct.
  * TODO: Add Loggers
+ * TODO: Build the logger to create a trace before and after the request. 
  * TODO: Add authentication and security
  * TODO: Setup some validations for the name
  * TODO: Setup a Kafka pipeline to push the name submissions.

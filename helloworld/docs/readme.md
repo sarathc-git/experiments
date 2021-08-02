@@ -92,6 +92,12 @@
 
 ### Store the object in a persistent store
 
+#### What are the best practices to create IDs in a distributed manner.
+
+    Would it make sense to use some thing like snowflak for primary keys and then
+    let the database where the object is persisted created a db_specific_id which
+    could be more user readable or follow some pattern like sequentially incrementing. 
+
     Create a repository to store the greeting request, post it on kafka.
 
 ### Build some business rules on accepting the greeting request

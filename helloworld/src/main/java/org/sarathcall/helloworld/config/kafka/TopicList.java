@@ -11,17 +11,20 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.annotation.Validated;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 @Data
 @Validated
 @Configuration
 @ConfigurationProperties("app.kafka")
+@Slf4j
 public class TopicList {
     private List<Topic> topics; 
     
     public Optional<List<Topic>> getTopics (){ 
-        System.out.println ("=== Returning from getTopics" + topics);
+        log.trace ("---> Starting getTopics with topics {}", topics);
         
+        log.trace ("<-- Returning from getTopics with topics {}", topics); 
         return Optional.ofNullable(topics);
     }
 
@@ -34,7 +37,9 @@ public class TopicList {
         private Short replicationFactor = 1;
 
         NewTopic toNewTopic() {
-            System.out.println ("=== Inside toNewTopic creating NewTopic objects");
+            log.trace ("--> Inside toNewTopic, creating NewTopic object");
+            log.debug ("Creating a NewTopic Object for topic {}, with {} partitions", this.name, this.numOfPartitions);
+            log.trace ("--> Inside toNewTopic, creating NewTopic object");
             return new NewTopic(this.name, this.numOfPartitions, this.replicationFactor);
         }
     }

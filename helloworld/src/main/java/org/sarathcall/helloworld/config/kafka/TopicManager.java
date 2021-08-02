@@ -10,7 +10,10 @@ import org.sarathcall.helloworld.config.kafka.TopicList.Topic;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.support.GenericWebApplicationContext;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Configuration
+@Slf4j
 public class TopicManager {
     private final TopicList topicList;
     private final GenericWebApplicationContext context;
@@ -18,27 +21,30 @@ public class TopicManager {
     public TopicManager (
                         TopicList topicConfigs,
                         GenericWebApplicationContext aContext) {
-                    System.out.println ("==== Inside TopicManager");
+                    log.trace ("--> Entering TopicManager Constructor");
                     this.topicList = topicConfigs;
                     this.context = aContext; 
-                    System.out.println ("==== Number of topics = " + topicConfigs.getTopics().get().size());
+                    log.debug ("===  Number of topics configured = {}",  topicConfigs.getTopics().get().size());
+                    log.trace ("<-- Exiting TopicManager Constructor");
                     }
 
 
     @PostConstruct
     public void createTopics() {
-        System.out.println ("===== Creating topics");
+        log.trace ("--> Entering CreateTopics");
         Optional<List<Topic>> topics = this.topicList.getTopics();
         topics.ifPresent(this::initTopicBeans);
-        
+        log.debug ("Initialized {} newTopicBeans", topics.map(List::size).orElse(0));
+        log.trace ("<-- Exiting Creating Topics");
     }
 
     private  void initTopicBeans(List<Topic> topics) {
-        System.out.println ("=== Inside initTopicBeans");
+        log.trace ("--> Entering initTopicBeans");
         topics.forEach (aTopic -> {
             context.registerBean(aTopic.getName(), 
                                 NewTopic.class, 
                                 aTopic::toNewTopic);
         });
+        log.trace ("<-- Returning from initTopicBeans");
     }
 }

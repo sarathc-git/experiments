@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Data
@@ -38,6 +39,7 @@ public class TopicList {
 
     // TODO : need to put validations for the Topic.
     @Data
+    @NoArgsConstructor
     @AllArgsConstructor
     static class Topic {
         @NotNull (message = "Topic name is mandatory")

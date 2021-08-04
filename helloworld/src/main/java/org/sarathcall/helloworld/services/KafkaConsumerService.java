@@ -24,7 +24,6 @@ public class KafkaConsumerService {
         log.debug ("--> Entering the KafkaConsumerService Constructor");
         this.objectMapper = objectMapper;
         log.error ("====___________________________________________====");
-        System.out.println ("_________________________________________");
         log.debug ("<-- Exiting the KafkaConsumerService Constructor");
     }
 
@@ -36,7 +35,6 @@ public class KafkaConsumerService {
                     aRecord.offset(),   aRecord.partition(), aRecord.topic());
         
         GreetingRequest aRequest = (GreetingRequest) aRecord.value();
-        System.out.println ("------_______________");
         log.error ("-------------------------------------------");
         log.warn ("The record recieved is {} ", aRequest);
         log.error ("+++++++++" + aRequest.getName());

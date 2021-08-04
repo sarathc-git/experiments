@@ -1,5 +1,5 @@
 
-CONSUMER group-id
+CONSUMER vscode-group-id
 topic: gr_posted_topic
 partitions: 0
 from: 1

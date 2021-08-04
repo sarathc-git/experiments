@@ -44,7 +44,7 @@ public class GreetingsControllerTest {
         headers.add ("Content-Type", "application/json");
         headers.add ("Accept", "text/plain");
         
-        Faker faker = new Faker(new Locale("en-in"));
+        Faker faker = new Faker(new Locale("en-IND"));
 
         String name = faker.name().firstName();
         GreetingRequest reqBody = GreetingRequest.builder()

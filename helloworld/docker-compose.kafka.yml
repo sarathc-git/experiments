@@ -23,3 +23,12 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: docker_internal
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
+  kafdrop:
+    image: obsidiandynamics/kafdrop
+    ports:
+      - 29100:9000
+    environment:
+      - KAFKA_BROKERCONNECT=kafka:9092
+      - JVM_OPTS=-Xms32M -Xmx64M
+    depends_on:
+      - kafka

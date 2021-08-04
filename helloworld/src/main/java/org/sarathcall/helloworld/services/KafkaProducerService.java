@@ -29,15 +29,13 @@ public class KafkaProducerService {
 
             @Override
             public void onSuccess(SendResult<String, Object> result) {
-                log.info("Success Posting to Kafka  {} ", aRequest);
+                log.info("Success in Posting to Kafka  {} ", aRequest);
             }
 
             @Override
             public void onFailure(Throwable ex) {
-                log.error("Failed posting to kafka ",ex);
+                log.error("Failure in posting to kafka ",ex);
             }
-
         });
     }
-
 }

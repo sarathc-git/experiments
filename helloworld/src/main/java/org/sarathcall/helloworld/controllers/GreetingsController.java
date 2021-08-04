@@ -57,7 +57,11 @@ public class GreetingsController {
 
     @GetMapping(value="/")
     public String defaultResponder () {
+        log.info("--> Started Request Processing");
+        log.info("<-- Completed Request Processing");
         return "Hello from Greeting Request";
+        
+
     }
 
 }

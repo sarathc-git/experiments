@@ -1,7 +1,10 @@
 package org.sarathcall.helloworld.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Value;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * A Greeting request captures the name of the requestor 
@@ -20,9 +23,13 @@ import lombok.Value;
  * 
  */
 
- @Value
- @Builder (toBuilder = true)
+ 
+ @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString (includeFieldNames=true)
 public class GreetingRequest {
-    private String name; 
-    private String locale; 
+    private String name;
+    private String locale;
 }

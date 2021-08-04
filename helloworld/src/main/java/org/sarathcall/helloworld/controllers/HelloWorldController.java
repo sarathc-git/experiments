@@ -10,9 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 class HelloWorldController {
     @RequestMapping("/v0.5/")
     public String hello() {
-        log.info("--> Starting Request Processing");
+        log.trace("--> Starting Request Processing");
 
-        log.info("<-- Completed Request Processing");
+        log.trace("<-- Completed Request Processing");
         return "Hello World";
     }
 }

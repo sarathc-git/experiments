@@ -4,8 +4,33 @@
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
+    <appender name="app_logs" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/tmp/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">        
+            <!-- daily rollover -->
+            <fileNamePattern>/tmp/app.%d{yyyy-MM-dd-HH-mm}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+     
+        <encoder>
+            <pattern>%relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>   
 
-    <root level="debug">
+    <root level="warn">
         <appender-ref ref="STDOUT" />
     </root>
+
+    <logger name="org.springframework" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.apache.kafka" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+
+    <logger name="org.sarathcall" level="DEBUG" additivity="false">
+        <appender-ref ref="app_logs"/>
+    </logger>
 </configuration>

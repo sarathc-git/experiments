@@ -1,5 +1,7 @@
 package org.sarathcall.helloworld.controllers;
 
+import com.github.ksuid.KsuidGenerator;
+
 import org.sarathcall.helloworld.dtos.GreetingRequestDTO;
 import org.sarathcall.helloworld.model.GreetingRequest;
 import org.sarathcall.helloworld.services.GreetingService;
@@ -36,8 +38,11 @@ public class GreetingsController {
     public String getGreeting (@RequestBody GreetingRequestDTO aRequestDTO
                                 ,@RequestHeader(name = "Content-Type") String contentType) {
         log.trace ("--> Starting Request Processing");
+        String uniqueId = KsuidGenerator.generate();
+
         GreetingRequest aRequest = GreetingRequest
                                     .builder()
+                                    .uid(uniqueId)
                                     .name(aRequestDTO.getName())
                                     .locale(aRequestDTO.getLocale())
                                     .build();
@@ -48,6 +53,7 @@ public class GreetingsController {
 
         String response = service.getGreeting(aRequest);
         
+
         aKafkaProducer.pushAGreetingRequest(aRequest);
         log.debug("Published {} to kafka", aRequest);
         

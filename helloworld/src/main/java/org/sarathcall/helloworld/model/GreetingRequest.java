@@ -30,6 +30,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString (includeFieldNames=true)
 public class GreetingRequest {
+    private String uid;
     private String name;
     private String locale;
 }

@@ -1,0 +1,14 @@
+version: '3'
+services:
+    aerospike:
+        image: aerospike/aerospike-server:latest
+        ports:
+            -  3000:3000
+            - 13000:3000
+        deploy:
+            replicas: 1
+            endpoint_mode: dnsrr 
+        labels:
+            com.aerospike.cluster: "my_aero"
+
+## TODO : Create a test script to validate that the setup is fine. 

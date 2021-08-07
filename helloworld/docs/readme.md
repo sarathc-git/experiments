@@ -108,6 +108,29 @@
     Create a business report of requests received with a distribution of the locale. 
     Transfrom the Greeting to enhance a metric by adding a country name based on the locale, so that we can plot a realtime global map. 
 
+    Do we need to create a unique ID only after storing in a database? 
+    Would it make things simpler 
+        * if we created and ID to identify the request,
+        * add it to the model 
+        * create a response
+        * now dump this reqeust to kafka
+        * and, send back the response. 
+
+    Asynchronously,
+        * store the object into an datastore (could be rdbms, could be nosql or both as the need be!)
+
+    Extrenal references to this will be through GET requests with 
+        GET /v/Object/uid/{uid}
+        GET /v/Object/sid/{sid}
+
+        Where uid is a globally unique id and id is valid only if the a data store creates  it. PROBLEM - This creates a dependency for the UI to know whether a id is available or not. 
+        
+        One way to solve it would be to use the unique id as a standard. 
+        and if the object is stored in a relationship data base as an entity, the entity 
+        could have an additional field called entity id (eid) or storage id (sid)
+        --- Does this look like we are over engineering this?! 
+
+
 ### Leverage TestContainers to enable seemless integration testing
 
 

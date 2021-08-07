@@ -11,6 +11,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 @EnableKafka
 @Configuration
@@ -26,6 +27,9 @@ public class KafkaConsumerConfig {
     private String valueDeSer;
     @Value ("${spring.kafka.consumer.properties.spring.json.value.default.type}")
     private String valueDefType;
+
+    @Value("${spring.kafka.consumer.properties.spring.json.trusted.packages}")
+    private String trustedPackages;
     
     
     @Bean
@@ -35,7 +39,8 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, keyDeSer);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, valueDeSer);
-    
+        props.put(JsonDeserializer.TRUSTED_PACKAGES, trustedPackages);
+        props.put(JsonDeserializer.VALUE_DEFAULT_TYPE, valueDefType);
 
         return new DefaultKafkaConsumerFactory<>(props);
     }

@@ -3,23 +3,16 @@ import React from 'react';
 import FacetComponents from './FacetIndex';
 
 
- function   renderer (facet) {
-        let config = facet.config;
+ function   renderer (item) {
+        let config = item.config;
 
         console.log ("-- Inside the facet renderer");
-        console.log ("Need to render " + facet.code );
-        if (!hasChildren) {
-            return React.createElement ( 
-                FacetComponents[facet.code],
-                    {facet : facet}, 
-                    null);
-        } else {
-            return React.createElement ( 
-                FacetComponents[facet.code],
-                    {facet : facet}, 
-                    facets);
-        }
+        console.log ("Need to render " + item.code );
         
+        return React.createElement ( 
+            FacetComponents[item.code],
+                {facet : item}, 
+                null); 
     }
 
 export default renderer;

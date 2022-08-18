@@ -16,15 +16,21 @@ class IdentityFacet extends React.Component {
     render() {
         let facet = this.props.facet;
         let config = this.props.facet.config;
+        let status = "new";
 
         console.log  ("Inside the Identity facet render");
-        
+        if (status ==="new") {
         return ( <div className="facet" key={facet.seq}>
             <span key={facet.seq}>
                 {facet.seq} --- {facet.code}  -- {config.type} -- {facet.name}
             </span>
         </div>)
-           
+        }  
+    }
+
+    onSubmit (event) {
+
+        
     }
 
 }

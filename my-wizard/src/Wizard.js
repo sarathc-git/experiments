@@ -17,15 +17,23 @@ class Wizard extends React.Component {
     this.config = this.getWizardConfig();
 
     this.container = {
+      id: 1234,
       lastFacetSubmitted : 3,
       facets: [
-        /// Data ! 
-
+        /// Facet Data ! 
+        { code: "Identity"},
+        { code: "AuthMode"},
+        { code: "Document", type:"KTP", meta:"status:" }
       ]
     }
 
     // The container is the object that has the state of the flow and the facets in the flow.  
   }
+
+  getContainer (id) {
+
+  }
+
 
   render() {
     let facetToRender = this.getFacetToRender(this.state.currentFacet);
@@ -35,9 +43,9 @@ class Wizard extends React.Component {
       <div>
         <h2>Welcome to {this.config.name} flow:</h2>
 
-          <div className="facet">
+        <div className="facet">
             {RenderFacet(facetToRender)}
-          </div>
+        </div>
 
         <div className="navigation">
           <button name="previous"
@@ -83,7 +91,7 @@ class Wizard extends React.Component {
           config:
           {
             type: "phone",
-            meta: { owner: "Entity" }
+            meta: { owner: "Entity", status: "approved" }
           }
         },
 
@@ -95,10 +103,10 @@ class Wizard extends React.Component {
             meta: { owner: "Identity" }
           }
         },
-
-            {
+       
+        {
             type: "facet", done: false, seq: 3,
-            name: "Upload KTP", code: "AuthMode",
+            name: "Upload KTP", code: "Document",
             config: {
               type: "KTP",
               meta: { owner: "User" }
@@ -112,7 +120,9 @@ class Wizard extends React.Component {
               type: "Passport",
               meta: { owner: "Identity" }
             }
-          }]
+          }
+       
+        ]
 
     }
 
